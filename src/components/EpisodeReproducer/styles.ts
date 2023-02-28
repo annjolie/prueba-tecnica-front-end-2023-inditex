@@ -24,4 +24,6 @@ export const Description = styled.p`
   }
 `;
 
-export const Reproducer = styled.audio``;
+export const Reproducer = styled.audio`
+  width: 100%;
+`;
