@@ -1,5 +1,5 @@
 import Input from '@/components/Input';
-import { Container, Title, SearchContainer, Label } from './styles';
+import { Container, SearchContainer, Label } from './styles';
 import { useLogic } from './logic';
 import PodcastList from '@/components/PodcastList';
 

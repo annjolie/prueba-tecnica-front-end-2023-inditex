@@ -3,6 +3,7 @@ import React from 'react';
 import type { SearchViewCardProps } from './types';
 
 export default function SearchViewCard({
+  id,
   podcastImage,
   alt,
   podcastTitle,
@@ -10,7 +11,7 @@ export default function SearchViewCard({
   className,
 }: SearchViewCardProps): JSX.Element {
   return (
-    <Container href={'/'} className={className}>
+    <Container href={`/podcast/${id}`} className={className}>
       <PodcastImage podcastImage={podcastImage} alt={alt}/>
       <Wrapper>
         <Title>{podcastTitle}</Title>

@@ -11,6 +11,7 @@ export default function PodcastList({ podcastList, className }: PodcastListProps
         {podcastList.map((podcast) => (
           <Grid key={podcast.id} item xs={12} sm={2.2} md={2.2}>
             <SearchViewCard
+              id={podcast.id}
               podcastImage={podcast.podcastImage}
               alt={podcast.alt}
               podcastTitle={podcast.podcastTitle}
