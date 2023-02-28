@@ -4,7 +4,7 @@ import { from } from '../../styles/utils/responsive';
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
-  border-block-end: 2px solid ${({ theme }) => theme.colors.primary.secondary};
+  border-block-end: 2px solid ${({ theme }) => theme.colors.primary.info3};
   a {
     text-decoration: none;
   }

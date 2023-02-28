@@ -6,6 +6,8 @@ const theme = {
       primary: "#1B46C2",
       secondary: "#64748B",
       info: "#55A6F8",
+      info5: 'rgba(85, 166, 248, 0.5)',
+      info3: 'rgba(85, 166, 248, 0.3)',
       warning: "#1E293B",
       gray100: "#F9FAFB",
       gray200: "#e9ecef",
