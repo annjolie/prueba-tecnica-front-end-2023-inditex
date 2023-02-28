@@ -1,0 +1,17 @@
+import withMaxWidth from '../../storybook/decorators/WithMaxWidth';
+import withPadding from '../../storybook/decorators/WithPadding';
+import type { Meta, Story } from '@storybook/react';
+
+import {{ properCase name }} from '.';
+import type { {{ properCase name }}Props } from './types';
+
+export default {
+  component: {{ properCase name }},
+  title: 'Pages/{{ properCase name }}',
+  decorators: [withPadding(), withMaxWidth()],
+} as Meta;
+
+const Template: Story<{{ properCase name }}Props> = (args) => <{{ properCase name }} {...args} />;
+
+export const Default = Template.bind({});
+Default.args = {};
