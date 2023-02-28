@@ -8,6 +8,7 @@ export default {
   title: 'General/PodcastSearchViewImage',
   args: {
     podcastImage: 'https://picsum.photos/200/300',
+    alt: 'Podcast Image',
   },
 } as Meta;
 
