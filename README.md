@@ -1,1 +1,1 @@
-# prueba-tecnica-front-end-2023-inditex
+# Prueba tecnica frontend 2023 inditex
