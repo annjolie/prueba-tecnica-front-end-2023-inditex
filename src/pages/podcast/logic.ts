@@ -35,6 +35,8 @@ export const useLogic = () => {
             title: episode.trackName,
             date: new Date(episode.releaseDate).toLocaleDateString(),
             duration: millisToMinutesAndSeconds(episode.trackTimeMillis),
+            podcastid: podcastId?.toString() ?? "",
+            episodeid: episode.trackId.toString(),
           } as RowsData;
         });
         setEpisodes(episodesData);

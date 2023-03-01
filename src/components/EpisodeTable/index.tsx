@@ -7,6 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import NextLink from 'next/link';
 
 export default function EpisodeTable({ rowsData }: EpisodeTableProps): JSX.Element {
   return (
@@ -23,7 +24,7 @@ export default function EpisodeTable({ rowsData }: EpisodeTableProps): JSX.Eleme
           {rowsData.map((row) => (
             <TableRow key={row.title} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
               <TableCell component="th" scope="row">
-                {row.title}
+                <NextLink href={`/podcast/${row.podcastid}/episode/${row.episodeid}`}>{row.title}</NextLink>
               </TableCell>
               <TableCell align="right">{row.date}</TableCell>
               <TableCell align="right">{row.duration}</TableCell>

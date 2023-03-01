@@ -7,4 +7,6 @@ export type RowsData = {
   title: string;
   date: string;
   duration: string;
+  podcastid: string;
+  episodeid: string;
 };
