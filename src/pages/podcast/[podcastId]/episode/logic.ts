@@ -14,7 +14,7 @@ export const useLogic = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const { data: podcastResultData } = await getPodcastDetail(podcastId?.toString() ?? '');
+      const { data: podcastResultData, error } = await getPodcastDetail(podcastId?.toString() ?? '');
       if (podcastResultData && podcastResultData.results.length > 0) {
         const podcastDetails: PodcastDetailCardProps = {
           podcastImage: podcastResultData.results[0].artworkUrl600,
@@ -36,6 +36,9 @@ export const useLogic = () => {
         setEpisode(episodeReproduction);
 
         setIsLoading(false);
+      }
+      if (error) {
+        console.log(error);
       }
     }
     fetchData();

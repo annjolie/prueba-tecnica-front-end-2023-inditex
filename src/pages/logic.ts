@@ -10,7 +10,7 @@ export const useLogic = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const { data: searchResultsData } = await getPodcasts();
+      const { data: searchResultsData, error } = await getPodcasts();
       if (searchResultsData) {
         const podcastListData = searchResultsData.feed.entry.map((podcast) => {
           return {
@@ -24,6 +24,9 @@ export const useLogic = () => {
         setFullPodcastList(podcastListData);
         setPodcastList(podcastListData);
         setIsLoading(false);
+      }
+      if (error) {
+        console.error(error);
       }
     }
     setIsLoading(true);
