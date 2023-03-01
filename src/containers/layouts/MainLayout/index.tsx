@@ -1,8 +1,10 @@
 import Head from 'next/head';
 import { Container, Content, MenuHeader } from './styles';
 import type { Props } from './types';
+import { useLogic } from './logic';
 
 export function MainLayout({ children }: Props) {
+  const { isLoading } = useLogic();
   return (
     <>
       <Head>
@@ -14,7 +16,7 @@ export function MainLayout({ children }: Props) {
       </Head>
 
       <Container>
-        <MenuHeader />
+        <MenuHeader isLoading={isLoading} />
         <Content>{children}</Content>
       </Container>
     </>

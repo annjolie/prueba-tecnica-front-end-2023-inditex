@@ -9,15 +9,19 @@ export default function Home() {
   return (
     <>
       <main>
-        {isLoading ? <p>Loading...</p>
-        :
         <Container>
           <SearchContainer>
             <Label>{podcastList.length}</Label>
-            <Input id='input-search' sizes='small' label='Filter podcasts...' type='search' onChange={handleFilterPodcasts} />
+            <Input
+              id="input-search"
+              sizes="small"
+              label="Filter podcasts..."
+              type="search"
+              onChange={handleFilterPodcasts}
+            />
           </SearchContainer>
           <PodcastList podcastList={podcastList} />
-        </Container>}
+        </Container>
       </main>
     </>
   );

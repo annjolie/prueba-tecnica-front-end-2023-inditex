@@ -1,15 +1,17 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getPodcastDetail } from '@/axios';
 import { PodcastDetailCardProps } from '@/components/PodcastDetailCard/types';
 import { RowsData } from '@/components/EpisodeTable/types';
 import { useRouter } from 'next/router';
+import { PodcastContext } from '@/context';
 
 export const useLogic = () => {
   const [podcast, setPodcast] = useState<PodcastDetailCardProps>({});
   const [episodes, setEpisodes] = useState<RowsData[]>([]);
   const { query } = useRouter();
   const { podcastId } = query;
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const { isLoading, setIsLoading } = React.useContext(PodcastContext);
+
 
   const millisToMinutesAndSeconds = (millis: number) : string => {
     const minutes = Math.floor(millis / 60000);
@@ -45,7 +47,7 @@ export const useLogic = () => {
       }
     }
     fetchData();
-  }, [podcastId]);
+  }, [podcastId, setIsLoading]);
 
   return {
     podcast,

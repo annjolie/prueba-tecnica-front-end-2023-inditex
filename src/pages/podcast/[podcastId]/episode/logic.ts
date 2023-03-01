@@ -1,15 +1,16 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getPodcastDetail } from '@/axios';
 import { PodcastDetailCardProps } from '@/components/PodcastDetailCard/types';
 import { useRouter } from 'next/router';
 import { EpisodeReproducerProps } from '@/components/EpisodeReproducer/types';
+import { PodcastContext } from '@/context';
 
 export const useLogic = () => {
   const [podcast, setPodcast] = useState<PodcastDetailCardProps>({});
   const [episode, setEpisode] = useState<EpisodeReproducerProps | null>(null);
   const { query } = useRouter();
   const { podcastId, episodeid } = query;
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const { isLoading, setIsLoading } = React.useContext(PodcastContext);
 
   useEffect(() => {
     async function fetchData() {
@@ -38,7 +39,7 @@ export const useLogic = () => {
       }
     }
     fetchData();
-  }, [podcastId, episodeid]);
+  }, [podcastId, episodeid, setIsLoading]);
 
   return {
     podcast,

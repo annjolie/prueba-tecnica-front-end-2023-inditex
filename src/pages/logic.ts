@@ -1,11 +1,12 @@
-import { ChangeEvent, useCallback, useEffect, useState } from 'react';
+import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { getPodcasts } from '@/axios';
 import { SearchViewCardProps } from '@/components/SearchViewCard/types';
+import { PodcastContext } from '@/context';
 
 export const useLogic = () => {
   const [fullPodcastList, setFullPodcastList] = useState<SearchViewCardProps[]>([]);
   const [podcastList, setPodcastList] = useState<SearchViewCardProps[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const { isLoading, setIsLoading } = React.useContext(PodcastContext);
 
   useEffect(() => {
     async function fetchData() {
@@ -25,8 +26,9 @@ export const useLogic = () => {
         setIsLoading(false);
       }
     }
+    setIsLoading(true);
     fetchData();
-  }, []);
+  }, [setIsLoading]);
 
   const handleFilterPodcasts = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
