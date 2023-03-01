@@ -13,11 +13,11 @@ export const useLogic = () => {
       if (searchResultsData) {
         const podcastListData = searchResultsData.feed.entry.map((podcast) => {
           return {
-            id: podcast.id.attributes["im:id"],
-            podcastImage: podcast["im:image"][0].label,
-            alt: podcast["im:name"].label,
+            id: podcast.id.attributes['im:id'],
+            podcastImage: podcast['im:image'][0].label,
+            alt: podcast['im:name'].label,
             podcastTitle: podcast.title.label,
-            podcastAuthor: podcast["im:artist"].label
+            podcastAuthor: podcast['im:artist'].label,
           } as SearchViewCardProps;
         });
         setFullPodcastList(podcastListData);
@@ -28,17 +28,22 @@ export const useLogic = () => {
     fetchData();
   }, []);
 
-  const handleFilterPodcasts = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    if (event.currentTarget.value) {
-      const podcastFiltered = fullPodcastList.filter((podcast) => {
-        return podcast.podcastTitle?.toLowerCase().includes(event.currentTarget.value.toLowerCase());
-      });
-      setPodcastList(podcastFiltered);
-    }
-    else {
-      setPodcastList(fullPodcastList);
-    }
-  }, [fullPodcastList]);
+  const handleFilterPodcasts = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      if (event.currentTarget.value) {
+        const podcastFiltered = fullPodcastList.filter((podcast) => {
+          return (
+            podcast.podcastTitle?.toLowerCase().includes(event.currentTarget.value.toLowerCase()) ||
+            podcast.podcastAuthor?.toLowerCase().includes(event.currentTarget.value.toLowerCase())
+          );
+        });
+        setPodcastList(podcastFiltered);
+      } else {
+        setPodcastList(fullPodcastList);
+      }
+    },
+    [fullPodcastList],
+  );
 
   return {
     podcastList,

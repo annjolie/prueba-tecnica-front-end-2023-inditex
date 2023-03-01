@@ -20,7 +20,7 @@ export const useLogic = () => {
   useEffect(() => {
     async function fetchData() {
       const { data: podcastResultData } = await getPodcastDetail(podcastId?.toString() ?? "");
-      if (podcastResultData) {
+      if (podcastResultData && podcastResultData.results.length > 0) {
         const podcastDetails : PodcastDetailCardProps = {
           podcastImage: podcastResultData.results[0].artworkUrl600,
           alt: podcastResultData.results[0].collectionName,
